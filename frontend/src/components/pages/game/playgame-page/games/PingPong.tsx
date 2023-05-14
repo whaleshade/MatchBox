@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useSocket } from '../game-socket/GameSocketContext';
+import { useGameSocket } from '../game-socket/GameSocketContext';
 
 interface IUserState {
   isHost: boolean;
@@ -36,7 +36,7 @@ interface IMapSize {
 }
 
 export default function PingPong() {
-  const socket = useSocket();
+  const socket = useGameSocket();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isHost = useRef<boolean>(false);
   const isWatcher = useRef<boolean>(false);

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSocket } from '../../playgame-page/game-socket/GameSocketContext';
+import { useGameSocket } from '../../playgame-page/game-socket/GameSocketContext';
 import { NoXPopup } from '../../../../commons/modals/popup-modal/Popup';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 export default function Matching({ handleClickModal }: Props) {
   const navigate = useNavigate();
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
 
   useEffect(() => {
     socketRef?.once(

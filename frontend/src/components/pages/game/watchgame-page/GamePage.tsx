@@ -20,7 +20,7 @@ import { getImageUrl } from '../../../../api/ProfileImge';
 import { userState } from '../../../../recoil/locals/login/atoms/atom';
 import { useGetGameHistory } from '../../../../api/Friends';
 import { isErrorOnGet } from '../../../../recoil/globals/atoms/atom';
-import { useSocket } from '../playgame-page/game-socket/GameSocketContext';
+import { useGameSocket } from '../playgame-page/game-socket/GameSocketContext';
 import ErrorGame from './component/ErrorGame';
 
 const Container = styled.div`
@@ -50,7 +50,7 @@ interface Prop {
 }
 
 export default function GamePage({ title }: Prop) {
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
   /* 공용 상태 */
   // 게임 와치 페이지와 게임 전적 페이지 구별하는 용도
   const isGameWatchPage = title === 'Game Watch';
@@ -77,17 +77,26 @@ export default function GamePage({ title }: Prop) {
   );
   const [isErrorGet, setIsErrorGet] = useRecoilState(isErrorOnGet);
   const [errorMsg, setErrorMsg] = useState<string>('');
+  const [backPath, setBackPath] = useState<string>('');
   const { data: gameInfos } = useGetGameList();
   const getBackPath = () => {
     if (isGameWatchPage) {
       return '/game/shop';
     }
     if (userInfo.userId === userId) {
+      // console.log(userId);
       return '/profile/my';
     }
     return `/profile/friend/${userId}`;
   };
-  const backPath = getBackPath();
+
+  useEffect(() => {
+    const path = getBackPath();
+    console.log(path);
+    setBackPath(path);
+  });
+
+  // const backPath = getBackPath();
   const errorHandler = () => {
     navigate(backPath);
   };
@@ -276,7 +285,9 @@ export default function GamePage({ title }: Prop) {
 
   return (
     <Layout
-      Header={<Header title={title} backPath={backPath} />}
+      Header={
+        <Header title={title} backClicked={() => true} backPath={backPath} />
+      }
       Footer={<Footer tab="Game" />}
     >
       <Container>

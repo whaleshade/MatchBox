@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-import { useSocket } from '../playgame-page/game-socket/GameSocketContext';
+import { useGameSocket } from '../playgame-page/game-socket/GameSocketContext';
 import ReadyGame from '../game-modal/readygame-modal/ReadyGame';
 import { userState } from '../../../../recoil/locals/login/atoms/atom';
 import { useGameWatchForReady } from '../../../../api/GameWatch';
@@ -19,7 +19,7 @@ export interface UserGameInfo {
 
 export default function ReadyGamePage() {
   const navigate = useNavigate();
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
   const userInfo = useRecoilValue(userState);
 
   // 게임 준비 모달

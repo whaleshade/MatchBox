@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../../../../recoil/locals/login/atoms/atom';
-import { useSocket } from '../../playgame-page/game-socket/GameSocketContext';
+import { useGameSocket } from '../../playgame-page/game-socket/GameSocketContext';
 import { GameWatch } from '../../../../../api/GameWatch';
 import { UserGameInfo } from '../../ready-game-page/ReadyGamePage';
 import Checkbox from './Checkbox';
@@ -35,7 +35,7 @@ interface Enemy {
 
 export default function ReadyGame({ onClick, gameWatch }: ReadyGameProps) {
   const navigate = useNavigate();
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
 
   const userInfo = useRecoilValue(userState);
   const [userGameInfo, setUserGameInfo] = useState<UserGameInfo | null>(null);

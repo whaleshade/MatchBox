@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../../commons/layout/Layout';
 import PingPong from './games/PingPong';
-import { useSocket } from './game-socket/GameSocketContext';
+import { useGameSocket } from './game-socket/GameSocketContext';
 import Popup from '../../../commons/modals/popup-modal/Popup';
 
 const clickAnimation = keyframes`
@@ -19,7 +19,7 @@ const clickAnimation = keyframes`
 `;
 
 export default function PlayGame() {
-  const socket = useSocket();
+  const socket = useGameSocket();
   const [scoreA, setScoreA] = useState<number>(0);
   const [scoreB, setScoreB] = useState<number>(0);
   const [winner, setWinner] = useState<string>('');
