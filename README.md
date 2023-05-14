@@ -52,8 +52,7 @@ https://github.com/whaleshade/MatchBox/assets/89024499/d16c7b34-f467-4b33-a91a-a
 
 
 ### 채팅 부분
-https://github.com/whaleshade/MatchBox/assets/89024499/f71ac88c-e458-45cf-a572-194b4cfacd73
-
+https://github.com/whaleshade/MatchBox/assets/89024499/7b49304c-a9c5-43df-9f12-90a1a23a3376
 
 ## 6. MatchBox Team
 
