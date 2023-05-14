@@ -25,6 +25,7 @@ export class ChannelsService {
   ) {}
 
   private logger = new Logger(ChannelsService.name);
+  private mynickname: string;
 
   async getPublicList(userId: string) {
     let channels;
@@ -63,7 +64,10 @@ export class ChannelsService {
 
           if (chats.length !== 1) {
             chats.map((chat) => {
-              if (chat.time > userChannel.lastChatTime) {
+              if (
+                chat.time > userChannel.lastChatTime &&
+                chat.nickname !== this.mynickname
+              ) {
                 notReadCount++;
               }
             });
@@ -164,6 +168,7 @@ export class ChannelsService {
       user.nickname,
       newChannel.channelId,
     );
+    this.mynickname = user.nickname;
     return { channelId: newChannel.channelId };
   }
 

@@ -38,7 +38,6 @@ export class ChannelsEventsGateway
   constructor(private channelService: ChannelsService) {}
 
   private logger = new Logger('ChannelGateway');
-
   // 채팅방에 들어갈 경우
   @SubscribeMessage('enterChannel')
   async enterChannel(client: Socket, enterChannelData: EnterChannelMessage) {
@@ -47,7 +46,6 @@ export class ChannelsEventsGateway
       userId,
       enterChannelData.channelId,
     );
-
     if (userChannel === null) {
       this.errorOut(client, '해당 채널에 참여하지 않았습니다.');
       return;
@@ -75,11 +73,12 @@ export class ChannelsEventsGateway
       return;
     }
     if (userChannel.channel.isDm) {
-      let banMessage: string | null = await this.channelService.isBanBuddyInDm(
-        userId,
-        createChatData.channelId,
-        userChannel.userChannelId,
-      );
+      const banMessage: string | null =
+        await this.channelService.isBanBuddyInDm(
+          userId,
+          createChatData.channelId,
+          userChannel.userChannelId,
+        );
       if (banMessage !== null) {
         this.errorEmit(client, banMessage);
         return;
@@ -114,7 +113,9 @@ export class ChannelsEventsGateway
       },
     };
 
+    const unread = true;
     client.to(createChatData.channelId).emit('chat', response);
+    client.to(createChatData.channelId).emit('unreadChat', 'unread');
 
     return response;
   }
