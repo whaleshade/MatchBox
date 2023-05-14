@@ -34,15 +34,25 @@ export default function MyMsgList() {
     setIsErrorGet(false);
     if (myChannelLists) {
       const updateMyChannelList = async () => {
-        await Promise.all(
-          myChannelLists.channel.map(async (channel: IMyChannels) => {
-            channel.owner.ownerImage = await getImageUrl(
-              channel.owner.ownerId,
-              userInfo.token,
-            );
-          }),
-        );
-        setChannels([...myChannelLists.channel]);
+        try {
+          await Promise.all(
+            myChannelLists.channel.map(async (channel: IMyChannels) => {
+              try {
+                channel.owner.ownerImage = await getImageUrl(
+                  channel.owner.ownerId,
+                  userInfo.token,
+                );
+              } catch (error) {
+                console.error('Failed to get image URL:', error);
+                // Handle or throw error
+              }
+            }),
+          );
+          setChannels([...myChannelLists.channel]);
+        } catch (error) {
+          console.error('Failed to update channel list:', error);
+          // Handle or throw error
+        }
       };
       updateMyChannelList();
     }
@@ -69,7 +79,11 @@ export default function MyMsgList() {
                 <RoomContent>
                   <ProfileImg>
                     <img
-                      src={room.owner.ownerImage}
+                      src={
+                        room.owner.ownerImage
+                          ? room.owner.ownerImage
+                          : 'https://i.stack.imgur.com/l60Hf.png'
+                      }
                       alt="profile"
                       width="100%"
                       height="100%"
