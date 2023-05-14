@@ -100,7 +100,7 @@ export default function BannedList() {
     };
 
     fetchData();
-  }, []);
+  }, [restoreClick]);
 
   return (
     <Layout
