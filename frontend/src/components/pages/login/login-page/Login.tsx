@@ -142,7 +142,7 @@ const FakeLogin = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 80%;
+  top: 100%;
   left: 0;
   width: 100%;
 `;

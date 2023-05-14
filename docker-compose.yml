@@ -25,19 +25,19 @@ services:
         volumes:
             - ./BackEnd:/Backend/
             - /usr/Backend/node_modules
-        # environment:
-        #     POSTGRES_USER: ${POSTGRES_USER}
-        #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        #     POSTGRES_DB: ${POSTGRES_DB}
-        #     DATABASE_URL: ${DATABASE_URL}
-        #     OAUTH_APP_URL: ${OAUTH_APP_URL}
-        #     OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID}
-        #     OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET}
-        #     JWT_SECRET: ${JWT_SECRET}
-        #     NODEMAILER_USER: ${NODEMAILER_USER}
-        #     NODEMAILER_PASSWORD: ${NODEMAILER_PASSWORD}
-        #     BACKEND_URL: ${BACKEND_URL}
-        #     FRONT_URL: ${FRONT_URL}
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+            DATABASE_URL: ${DATABASE_URL}
+            OAUTH_APP_URL: ${OAUTH_APP_URL}
+            OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID}
+            OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET}
+            JWT_SECRET: ${JWT_SECRET}
+            NODEMAILER_USER: ${NODEMAILER_USER}
+            NODEMAILER_PASSWORD: ${NODEMAILER_PASSWORD}
+            BACKEND_URL: ${BACKEND_URL}
+            FRONT_URL: ${FRONT_URL}
         command: >
             bash -c " sleep 30 &&
                     npx prisma migrate deploy &&
