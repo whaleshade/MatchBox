@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
@@ -33,6 +33,7 @@ export default function ChannelList() {
   const [passwordInput, setPasswordInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const userInfo = useRecoilValue(userState);
+
   const handleError = (error: AxiosError) => {
     if (error.response) {
       setIsErrorGet(true);

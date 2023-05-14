@@ -10,7 +10,7 @@ import Footer from '../../../commons/footer/Footer';
 import PingPongIcon from '../../../../assets/icon/pingpong.svg';
 import SelectArrow from '../../../../assets/icon/SelectArrow.svg';
 import { getImageUrl } from '../../../../api/ProfileImge';
-import { useSocket } from '../../login/login-page/LoginSocketContext';
+import { useGameSocket } from '../../login/login-page/LoginSocketContext';
 import AcceptWaiting from '../../game/game-modal/accept-waiting-modal/AcceptWaiting';
 import ErrorPopupNav from '../../../commons/error/ErrorPopupNav';
 
@@ -58,7 +58,7 @@ export default function FriendProfile() {
   };
 
   const selectRef = useRef<HTMLSelectElement>(null);
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
 
   // 에러
   const [isErrorGet, setIsErrorGet] = useState<boolean>(false);

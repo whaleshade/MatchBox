@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NoXPopup } from '../../../../commons/modals/popup-modal/Popup';
-import { useSocket } from '../../../login/login-page/LoginSocketContext';
+import { useGameSocket } from '../../../login/login-page/LoginSocketContext';
 
 interface Props {
   handleClickModal: () => void;
@@ -11,7 +11,7 @@ interface Props {
 
 export default function AcceptWaiting({ handleClickModal, buddyId }: Props) {
   const navigate = useNavigate();
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
 
   useEffect(() => {
     // 초대 취소 성공

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Layout from '../../../commons/layout/Layout';
 import Footer from '../../../commons/footer/Footer';
@@ -11,7 +11,7 @@ import PingPongIcon from '../../../../assets/icon/pingpong.svg';
 import SelectArrow from '../../../../assets/icon/SelectArrow.svg';
 import { userState } from '../../../../recoil/locals/login/atoms/atom';
 import Matching from '../../game/game-modal/matching-modal/Matching';
-import { useSocket } from '../../game/playgame-page/game-socket/GameSocketContext';
+import { useGameSocket } from '../../game/playgame-page/game-socket/GameSocketContext';
 import ErrorPopup from '../../../commons/error/ErrorPopup';
 import { isErrorOnGet } from '../../../../recoil/globals/atoms/atom';
 import ErrorPopupNav from '../../../commons/error/ErrorPopupNav';
@@ -48,7 +48,6 @@ const initailUserValues = {
 export default function MyProfile() {
   // 페이지 이동
   const navigate = useNavigate();
-
   // 유저  정보
   const userInfo = useRecoilValue(userState);
 
@@ -91,7 +90,13 @@ export default function MyProfile() {
   );
 
   const selectRef = useRef<HTMLSelectElement>(null);
-  const socketRef = useSocket();
+  const socketRef = useGameSocket();
+
+  const handleBackClicked = () => {
+    if (socketRef) {
+      socketRef.close();
+    }
+  };
 
   const getUserGameHistoryText = (gameId: string) => {
     const selectedUserGameId = userGames?.filter(
