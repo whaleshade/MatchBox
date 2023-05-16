@@ -10,15 +10,15 @@
 -   [4. 프로젝트 구조](#4-Diagram-)
 -   [5. 프로젝트 내용](#5-Working-App-Video-)
 -   [6. 팀 소개](#6-MatchBox-Team-)
-    <br>
+
+<br>
 
 ## 1. Introduce
 
 -   ### MatchBox?
     `과기부 산하 이노베이션아카데미 42서울의 교육생들이 간단한 게임을 즐기고 소통을 할 수 있는 채팅 웹 애플리케이션 입니다. 42서울 공통과정 졸업 프로젝트로 풀스택으로 백엔드 프론트엔드 모두 담당하여 제작하였습니다.`
 -   ### User
--   
-    > **42Cadets/Members** : 친구 관리, 채팅, 게임 <br> > <br>
+-   > **42Cadets/Members** : 친구 관리, 채팅, 게임 <br> > <br>
 
 ## 2. Link
 
@@ -48,13 +48,17 @@
 ## 5. Working App Video
 
 ### 게임 부분
+
 https://github.com/whaleshade/MatchBox/assets/89024499/d16c7b34-f467-4b33-a91a-aaa12aece825
 
-
 ### 채팅 부분
+
 https://github.com/whaleshade/MatchBox/assets/89024499/7b49304c-a9c5-43df-9f12-90a1a23a3376
 
 ## 6. MatchBox Team
+
+백엔드/프론트엔드 구분 없이 총 4명이서 디자인/설계/백엔드/프론트까지 진행
+https://github.com/orgs/Match-Box-Team/people
 
 ## 기타
 
