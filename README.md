@@ -58,8 +58,8 @@ https://github.com/whaleshade/MatchBox/assets/89024499/7b49304c-a9c5-43df-9f12-9
 
 ## 6. MatchBox Team
 
-백엔드/프론트엔드 구분 없이 총 4명이서 디자인/설계/백엔드/프론트까지 진행
-https://github.com/orgs/Match-Box-Team/people
+백엔드/프론트엔드 구분 없이 총 4명이서 디자인/설계/백엔드/프론트까지 진행했습니다. <br>
+https://github.com/orgs/Match-Box-Team/people <br>
 
 ## 기타
 
